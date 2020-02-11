@@ -1,6 +1,6 @@
 {
   "name": "@myalbum/react-rte",
-  "version": "1.17.0",
+  "version": "1.18.0",
   "description": "React Rich Text Editor",
   "main": "dist/react-rte.js",
   "files": [
