@@ -1,36 +1,16 @@
 /* @flow */
 
-import autobind from 'class-autobind';
-import cx from 'classnames';
 import React, {Component} from 'react';
 import {Entity} from 'draft-js';
 
-import styles from './ImageSpan.css';
+import './ImageSpan.scss';
+import filteredClassnames from '../lib/filteredClasnames';
 
-import type {ContentState} from 'draft-js';
-
-// TODO: Use a more specific type here.
-type ReactNode = any;
-
-type Props = {
-  children: ReactNode;
-  entityKey: string;
-  contentState: ContentState,
-  className?: string;
-};
-
-type State = {
-  width: number;
-  height: number;
-};
 
 export default class ImageSpan extends Component {
-  props: Props;
-  state: State;
-
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
-    autobind(this);
+    
     const entity = props.contentState.getEntity(props.entityKey);
     const {width, height} = entity.getData();
     this.state = {
@@ -47,7 +27,7 @@ export default class ImageSpan extends Component {
     image.src = src;
     image.onload = () => {
       if (width == null || height == null) {
-        // TODO: isMounted?
+        
         this.setState({width: image.width, height: image.height});
         Entity.mergeData(
           this.props.entityKey,
@@ -64,11 +44,9 @@ export default class ImageSpan extends Component {
 
   render() {
     const {width, height} = this.state;
-    let {className} = this.props;
     const entity = this.props.contentState.getEntity(this.props.entityKey);
     const {src} = entity.getData();
 
-    className = cx(className, styles.root);
     const imageStyle = {
       verticalAlign: 'bottom',
       backgroundImage: `url("${src}")`,
@@ -82,25 +60,11 @@ export default class ImageSpan extends Component {
 
     return (
       <span
-        className={className}
+        className={filteredClassnames(["rte-image-span", this.props.className])}
         style={imageStyle}
-        onClick={this._onClick}
       >
         {this.props.children}
       </span>
-    );
-  }
-
-  _onClick() {
-    console.log('image clicked');
-  }
-
-  _handleResize(event: Object, data: Object) {
-    const {width, height} = data.size;
-    this.setState({width, height});
-    Entity.mergeData(
-      this.props.entityKey,
-      {width, height}
     );
   }
 }

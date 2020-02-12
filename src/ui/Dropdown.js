@@ -1,33 +1,17 @@
 /* @flow */
 import React, {Component} from 'react';
-import autobind from 'class-autobind';
-import cx from 'classnames';
 
-import styles from './Dropdown.css';
-
-type Choice = {
-  label: string;
-  className?: string;
-};
-
-type Props = {
-  choices: Map<string, Choice>;
-  selectedKey: ?string;
-  onChange: (selectedKey: string) => any;
-  className?: string;
-};
+import './Dropdown.scss';
+import filteredClassnames from '../lib/filteredClasnames';
 
 export default class Dropdown extends Component {
-  props: Props;
-
   constructor() {
     super(...arguments);
-    autobind(this);
   }
 
   render() {
     let {choices, selectedKey, className, ...otherProps} = this.props;
-    className = cx(className, styles.root);
+    className = filteredClassnames(["rte-dropdown", className]);
     let selectedItem = (selectedKey == null) ? null : choices.get(selectedKey);
     let selectedValue = selectedItem && selectedItem.label || '';
     return (
@@ -35,13 +19,14 @@ export default class Dropdown extends Component {
         <select {...otherProps} value={selectedKey} onChange={this._onChange}>
           {this._renderChoices()}
         </select>
-        <span className={styles.value}>{selectedValue}</span>
+        <span className={"value"}>{selectedValue}</span>
       </span>
     );
   }
 
-  _onChange(event: Object) {
-    let value: string = event.target.value;
+  _onChange = (event) =>
+  {
+    let value = event.target.value;
     this.props.onChange(value);
   }
 

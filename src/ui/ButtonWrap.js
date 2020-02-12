@@ -1,15 +1,12 @@
 /* @flow */
 
 import React from 'react';
-import cx from 'classnames';
 
-import styles from './ButtonWrap.css';
+import filteredClassnames from '../lib/filteredClasnames';
 
-type Props = {
-  className?: string;
-};
+import './ButtonWrap.scss';
 
-export default function ButtonWrap(props: Props) {
-  let className = cx(props.className, styles.root);
-  return <div {...props} className={className} />;
+
+export default function ButtonWrap(props) {
+  return <div {...props} className={filteredClassnames(["rte-button-wrap", props.className])} />;
 }

@@ -1,0 +1,74 @@
+.rte {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+
+  .rte-editor {
+    cursor: text;
+    font-size: 16px;
+
+    .hidePlaceholder :global(.public-DraftEditorPlaceholder-root) {
+      display: none;
+    }
+  }
+  
+  .rte-editor :global(.public-DraftEditorPlaceholder-root),
+  .rte-editor :global(.public-DraftEditor-content) {
+    margin: 0;
+    /* 1px is added as transparent border on .DraftEditor-editorContainer */
+    padding: 9px;
+  }
+  
+  .rte-editor :global(.public-DraftEditor-content) {
+    overflow: auto;
+  }
+  
+  .rte-editor .paragraph {
+    margin: 14px 0;
+  }
+  
+  /* Consecutive code blocks are nested inside a single parent <pre> (like <li>
+    inside <ul>). Unstyle the parent and style the children. */
+  .rte-editor pre {
+    margin: 14px 0;
+  }
+  
+  .rte-editor .codeBlock {
+    background-color: #f3f3f3;
+    font-family: "Inconsolata", "Menlo", "Consolas", monospace;
+    font-size: 16px;
+    /* This should collapse with the margin around the parent <pre>. */
+    margin: 14px 0;
+    padding: 20px;
+  }
+  
+  /* Hacky: Remove padding from inline <code> within code block. */
+  .rte-editor .codeBlock span[style] {
+    padding: 0 !important;
+  }
+  
+  .rte-editor .blockquote {
+    border-left: 5px solid #eee;
+    color: #666;
+    font-family: 'Hoefler Text', 'Georgia', serif;
+    font-style: italic;
+    margin: 16px 0;
+    padding: 10px 20px;
+  }
+  
+  /* There shouldn't be margin outside the first/last blocks */
+  .rte-editor .block:first-child,
+  .rte-editor pre:first-child,
+  .rte-editor ul:first-child,
+  .rte-editor ol:first-child {
+    margin-top: 0;
+  }
+  .rte-editor .block:last-child,
+  .rte-editor pre:last-child,
+  .rte-editor ul:last-child,
+  .rte-editor ol:last-child {
+    margin-bottom: 0;
+  }
+}

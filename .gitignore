@@ -5,3 +5,5 @@ _*
 /dist
 /node_modules
 .idea
+.history
+.vscode

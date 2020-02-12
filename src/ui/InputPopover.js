@@ -3,27 +3,12 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import IconButton from './IconButton';
 import ButtonGroup from './ButtonGroup';
-import autobind from 'class-autobind';
-import cx from 'classnames';
 
-import styles from './InputPopover.css';
-
-type Props = {
-  className?: string;
-  defaultValue?: string;
-  onCancel: () => any;
-  onSubmit: (value: string) => any;
-};
+import './InputPopover.scss';
+import filteredClassnames from '../lib/filteredClasnames';
 
 export default class InputPopover extends Component {
-  props: Props;
-  _inputRef: ?Object;
-
-  constructor() {
-    super(...arguments);
-    autobind(this);
-  }
-
+  
   componentDidMount() {
     document.addEventListener('click', this._onDocumentClick);
     document.addEventListener('keydown', this._onDocumentKeydown);
@@ -39,19 +24,18 @@ export default class InputPopover extends Component {
 
   render() {
     let {props} = this;
-    let className = cx(props.className, styles.root);
     return (
-      <div className={className}>
-        <div className={styles.inner}>
+      <div className={filteredClassnames(['rte-input-popover', props.className])}>
+        <div className={"inner"}>
           <input
             ref={this._setInputRef}
             defaultValue={props.defaultValue}
             type="text"
             placeholder="https://example.com/"
-            className={styles.input}
+            className={"input"}
             onKeyPress={this._onInputKeyPress}
           />
-          <ButtonGroup className={styles.buttonGroup}>
+          <ButtonGroup className={"buttonGroup"}>
             <IconButton
               label="Cancel"
               iconName="cancel"
@@ -68,11 +52,13 @@ export default class InputPopover extends Component {
     );
   }
 
-  _setInputRef(inputElement: Object) {
+  _setInputRef = (inputElement) =>
+  {
     this._inputRef = inputElement;
   }
 
-  _onInputKeyPress(event: Object) {
+  _onInputKeyPress = (event) =>
+  {
     if (event.which === 13) {
       // Avoid submitting a <form> somewhere up the element tree.
       event.preventDefault();
@@ -80,12 +66,14 @@ export default class InputPopover extends Component {
     }
   }
 
-  _onSubmit() {
+  _onSubmit = () =>
+  {
     let value = this._inputRef ? this._inputRef.value : '';
     this.props.onSubmit(value);
   }
 
-  _onDocumentClick(event: Object) {
+  _onDocumentClick = (event) =>
+  {
     let rootNode = ReactDOM.findDOMNode(this);
     if (!rootNode.contains(event.target)) {
       // Here we pass the event so the parent can manage focus.
@@ -93,7 +81,8 @@ export default class InputPopover extends Component {
     }
   }
 
-  _onDocumentKeydown(event: Object) {
+  _onDocumentKeydown = (event) =>
+  {
     if (event.keyCode === 27) {
       this.props.onCancel();
     }

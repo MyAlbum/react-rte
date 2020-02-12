@@ -2,11 +2,8 @@
 
 import {ContentBlock, EditorState, genKey} from 'draft-js';
 
-export default function insertBlockAfter(
-  editorState: EditorState,
-  blockKey: string,
-  newType: string,
-): EditorState {
+export default function insertBlockAfter(editorState, blockKey, newType)
+{
   let content = editorState.getCurrentContent();
   let blockMap = content.getBlockMap();
   let block = blockMap.get(blockKey);

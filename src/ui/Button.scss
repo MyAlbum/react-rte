@@ -1,4 +1,5 @@
-.root {
+.rte-button
+{
   display: inline-block;
   margin: 0 5px 0 0;
   padding: 3px 8px;
@@ -15,13 +16,15 @@
   font-family: inherit;
   cursor: pointer;
   white-space: nowrap;
-}
 
-.root:disabled {
-  cursor: not-allowed;
-  background: none transparent;
-}
-
-.root:disabled > * {
-  opacity: .5;
+  &:disabled
+  {
+    cursor: not-allowed;
+    background: none transparent;
+  }
+  
+  &:disabled > *
+  {
+    opacity: .5;
+  }
 }

@@ -1,4 +1,4 @@
-.root {
+.rte-toolbar {
   font-family: 'Helvetica', sans-serif;
   font-size: 14px;
   margin: 0 10px;
@@ -8,9 +8,9 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
 
-.onBottom {
-  border-top: 1px solid #ddd;
-  border-bottom: none;
+  .onBottom {
+    border-top: 1px solid #ddd;
+    border-bottom: none;
+  }
 }

@@ -27,6 +27,17 @@ var rules = [
     ],
   },
   {
+    test: /\.s[ac]ss$/i,
+    use: [
+      // Creates `style` nodes from JS strings
+      'style-loader',
+      // Translates CSS into CommonJS
+      'css-loader',
+      // Compiles Sass to CSS
+      'sass-loader',
+    ],
+  },
+  {
     test: /\.global\.css$/,
     use: ['style-loader', 'raw-loader'],
   },
@@ -38,6 +49,9 @@ module.exports = [{
     path: path.join(__dirname, 'dist'),
     filename: 'react-rte.js',
     libraryTarget: 'commonjs2',
+  },
+  optimization: {
+    minimize: true
   },
   externals: {
     react: 'react',
@@ -52,17 +66,6 @@ module.exports = [{
         NODE_ENV: JSON.stringify('production'),
       },
     }),
-    new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),
   ],
-}, {
-  entry: './src/demo.js',
-  output: {
-    path: path.join(__dirname, 'dist'),
-    publicPath: '/dist/',
-    filename: 'demo.js',
-  },
-  module: {
-    rules: rules,
-  },
 }];

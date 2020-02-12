@@ -1,10 +1,8 @@
 /* @flow */
-import {EditorState} from 'draft-js';
 import {OrderedMap} from 'immutable';
 
-export default function getBlocksInSelection(
-  editorState: EditorState,
-): EditorState {
+export default function getBlocksInSelection(editorState)
+{
   let contentState = editorState.getCurrentContent();
   let blockMap = contentState.getBlockMap();
   let selection = editorState.getSelection();

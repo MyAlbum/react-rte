@@ -1,17 +1,13 @@
 /* @flow */
 
 import React from 'react';
-import cx from 'classnames';
 
-import styles from './ButtonGroup.css';
+import filteredClassnames from '../lib/filteredClasnames';
 
-type Props = {
-  className?: string;
-};
+import './ButtonGroup.scss';
 
-export default function ButtonGroup(props: Props) {
-  let className = cx(props.className, styles.root);
+export default function ButtonGroup(props) {
   return (
-    <div {...props} className={className} />
+    <div {...props} className={filteredClassnames(["rte-button-group", props.className])} />
   );
 }

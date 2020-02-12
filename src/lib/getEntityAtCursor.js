@@ -1,14 +1,7 @@
 /* @flow */
-import type {EditorState, ContentBlock} from 'draft-js';
 
-export type EntityDescription = {
-  entityKey: string;
-  blockKey: string;
-  startOffset: number;
-  endOffset: number;
-};
-
-function getEntityAtOffset(block: ContentBlock, offset: number): ?EntityDescription {
+function getEntityAtOffset(block, offset)
+{
   let entityKey = block.getEntityAt(offset);
   if (entityKey == null) {
     return null;
@@ -30,7 +23,8 @@ function getEntityAtOffset(block: ContentBlock, offset: number): ?EntityDescript
   };
 }
 
-export default function getEntityAtCursor(editorState: EditorState): ?EntityDescription {
+export default function getEntityAtCursor(editorState)
+{
   let selection = editorState.getSelection();
   let startKey = selection.getStartKey();
   let startBlock = editorState.getCurrentContent().getBlockForKey(startKey);
