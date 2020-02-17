@@ -1,9 +1,9 @@
 /* @flow */
 import {EditorState, convertToRaw, convertFromRaw} from 'draft-js';
-import {stateToHTML} from 'draft-js-export-html';
-import {stateFromHTML} from 'draft-js-import-html';
-import {stateToMarkdown} from 'draft-js-export-markdown';
-import {stateFromMarkdown} from 'draft-js-import-markdown';
+import {stateToHTML} from '@myalbum/draft-js-export-html';
+import {stateFromHTML} from '@myalbum/draft-js-import-html';
+import {stateToMarkdown} from '@myalbum/draft-js-export-markdown';
+import {stateFromMarkdown} from '@myalbum/draft-js-import-markdown';
 
 export default class EditorValue {
   constructor(editorState, cache = {}) {

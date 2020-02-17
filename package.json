@@ -1,6 +1,6 @@
 {
   "name": "@myalbum/react-rte",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "description": "React Rich Text Editor",
   "main": "dist/react-rte.js",
   "files": [
@@ -19,19 +19,19 @@
     "test-src": "BABEL_ENV=test mocha \"src/**/__tests__/*.js\""
   },
   "dependencies": {
+    "@myalbum/draft-js-export-html": ">=1.4.1",
+    "@myalbum/draft-js-export-markdown": "^1.7.0",
+    "@myalbum/draft-js-import-html": ">=1.4.1",
+    "@myalbum/draft-js-import-markdown": "^1.7.0",
+    "@myalbum/draft-js-utils": ">=1.4.0",
     "babel-runtime": "^6.23.0",
     "class-autobind": "^0.1.4",
-    "draft-js": ">=0.11.3",
-    "draft-js-export-html": ">=1.4.1",
-    "draft-js-export-markdown": ">=1.4.0",
-    "draft-js-import-html": ">=1.4.1",
-    "draft-js-import-markdown": ">=1.4.0",
-    "draft-js-utils": ">=1.4.0",
-    "immutable": "^3.8.1"
+    "draft-js": ">=0.11.3"
   },
   "peerDependencies": {
     "react": "0.14.x || 15.x.x || 16.x.x",
-    "react-dom": "0.14.x || 15.x.x || 16.x.x"
+    "react-dom": "0.14.x || 15.x.x || 16.x.x",
+    "immutable": "^3.8.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

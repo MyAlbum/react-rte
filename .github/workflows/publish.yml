@@ -12,6 +12,8 @@ jobs:
       with:
         registry-url: 'https://npm.pkg.github.com'
     - run: npm install
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
     - name: Setup git
       run: |
         git config --local user.email "sysadmin@myalbum.com"
