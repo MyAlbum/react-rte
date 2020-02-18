@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@myalbum/draft-js-export-html": ">=1.4.1",
-    "@myalbum/draft-js-export-markdown": "^1.7.0",
+    "@myalbum/draft-js-export-markdown": "^1.8.0",
     "@myalbum/draft-js-import-html": ">=1.4.1",
     "@myalbum/draft-js-import-markdown": "^1.7.0",
     "@myalbum/draft-js-utils": ">=1.4.0",
