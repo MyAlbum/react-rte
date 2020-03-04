@@ -137,7 +137,7 @@ export default class EditorToolbar extends Component {
       <StyleButton
         {...toolbarConfig.extraProps}
         key={String(index)}
-        isDisabled={blockType!=='unstyled'}
+        isDisabled={blockType.indexOf('header')>-1}
         isActive={type.style === blockType}
         label={type.label}
         onToggle={this._toggleBlockType}
@@ -158,7 +158,7 @@ export default class EditorToolbar extends Component {
       <StyleButton
         {...toolbarConfig.extraProps}
         key={String(index)}
-        isDisabled={blockType!=='unstyled'}
+        isDisabled={blockType.indexOf('header')>-1}
         isActive={currentStyle.has(type.style)}
         label={type.label}
         onToggle={this._toggleInlineStyle}
