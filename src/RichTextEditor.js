@@ -274,8 +274,24 @@ export default class RichTextEditor extends Component {
     }
     let newValue = value.setEditorState(editorState);
     let newEditorState = newValue.getEditorState();
+    
+    if(this.props.forceTitle)
+    {
+      const HEADING = 'header-one';
+      const currentContent = editorState.getCurrentContent();
+      const firstBlockKey = currentContent.getBlockMap().first().getKey();
+      const currentBlockKey = editorState.getSelection().getAnchorKey();
+      const isFirstBlock = (currentBlockKey === firstBlockKey);
+      const currentBlockType = RichUtils.getCurrentBlockType(editorState);
+      const isHeading = currentBlockType === HEADING;
+      if (isFirstBlock !== isHeading) {
+        newEditorState = changeBlockType(newEditorState, currentBlockKey, HEADING);
+        newValue = value.setEditorState(newEditorState);
+      }
+    }
+
     this._handleInlineImageSelection(newEditorState);
-    onChange(newValue);
+    onChange(newValue, newEditorState);
   }
 
   _handleInlineImageSelection = (editorState) =>
