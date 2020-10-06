@@ -3,9 +3,7 @@
 import React, {Component} from 'react';
 import {Entity} from 'draft-js';
 
-import './ImageSpan.scss';
 import filteredClassnames from '../lib/filteredClasnames';
-
 
 export default class ImageSpan extends Component {
   constructor(props) {

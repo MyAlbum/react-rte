@@ -4,7 +4,6 @@ import React, {Component} from 'react';
 import Button from './Button';
 import ButtonWrap from './ButtonWrap';
 
-import './IconButton.scss';
 import filteredClassnames from '../lib/filteredClasnames';
 
 

@@ -1,7 +1,6 @@
 /* @flow */
 import React, {Component} from 'react';
 
-import './Dropdown.scss';
 import filteredClassnames from '../lib/filteredClasnames';
 
 export default class Dropdown extends Component {

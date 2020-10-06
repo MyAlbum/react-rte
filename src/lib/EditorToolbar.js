@@ -16,8 +16,6 @@ import clearEntityForRange from './clearEntityForRange';
 import autobind from 'class-autobind';
 import filteredClassnames from './filteredClasnames';
 
-import './EditorToolbar.scss';
-
 export default class EditorToolbar extends Component {
   constructor() {
     super(...arguments);

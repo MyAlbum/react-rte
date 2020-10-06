@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import IconButton from './IconButton';
 import ButtonGroup from './ButtonGroup';
 
-import './InputPopover.scss';
 import filteredClassnames from '../lib/filteredClasnames';
 
 export default class InputPopover extends Component {

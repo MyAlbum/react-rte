@@ -21,9 +21,6 @@ import Button from './ui/Button';
 import Dropdown from './ui/Dropdown';
 import filteredClassnames from './lib/filteredClasnames';
 
-import './Draft.global.css';
-import './RichTextEditor.scss';
-
 const MAX_LIST_DEPTH = 2;
 
 // Custom overrides for "code" style.
